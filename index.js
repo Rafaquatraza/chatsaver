@@ -36,12 +36,9 @@ async function main() {
     await mongoose.connect(MONGO_URI);
 }
 
-app.get("/",(req,res)=>{
-    res.send("root is working");
-});
 
 //index route
-app.get("/chats",async(req,res)=>{
+app.get("/",async(req,res)=>{
     try {
         let chats=await Chat.find();
         console.log(chats);
