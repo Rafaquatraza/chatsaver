@@ -49,6 +49,17 @@ app.get("/",async(req,res)=>{
     }
 });
 
+// alias route for redirects
+app.get("/chats",async(req,res)=>{
+    try {
+        let chats=await Chat.find();
+        res.render("index.ejs",{chats});
+    } catch(err) {
+        console.log(err);
+        res.redirect("/");
+    }
+});
+
 //new route
 app.get("/chats/new",(req,res)=>{
     res.render("new.ejs");
